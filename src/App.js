@@ -1,12 +1,11 @@
+import { useState } from "react";
 import Logo from "./components/Logo";
 import Form from "./components/Form";
 import PackagingList from "./components/PackagingList";
 import Statistics from "./components/Statistics";
-import { useState } from "react";
 
 export default function App() {
   const [items, setItems] = useState([]);
-  
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
@@ -16,7 +15,7 @@ export default function App() {
     setItems((items) =>
       items.map((item) => {
         if (item.id === id) {
-          item = {...item, packed: !item.packed};
+          item = { ...item, packed: !item.packed };
         }
         return item;
       })
@@ -30,8 +29,9 @@ export default function App() {
       })
     );
   }
-  
+
   function handleClearList() {
+    if (items.length === 0) return;
     setItems([]);
   }
   return (
